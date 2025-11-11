@@ -1,0 +1,36 @@
+create database thu_vien;
+use thu_vien;
+
+create table tac_gia (
+MaTacGia int primary key   auto_increment,
+TenTacGia varchar ( 200 ) not null
+);
+
+create table sach ( 
+MaSach int primary key auto_increment,
+TenSach varchar ( 200 ),
+NamXuatBan date
+);
+ 
+create table sach_tac_gia (
+MaSach int not null, 
+MaTacGia int not null,
+foreign key (MaSach) references sach(MaSach),
+foreign key ( MaTacGia ) references tac_gia( MaTacGia )
+);
+
+insert into tac_gia ( TenTacGia )
+values
+('Nguyễn du'),
+('Nguyễn dữ');
+insert into sach( TenSach , NamXuatBan ) 
+values 
+('Truyện kiểu','2001-01-01'),
+('Tam quốc','2002-02-02');
+select * from sach;
+insert into sach_tac_gia ( MaSach , MaTacGia )
+values 
+( 1 , 1 ),
+( 1 , 2 );
+select * from tac_gia;
+select * from sach_tac_gia;
