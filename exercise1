@@ -1,0 +1,17 @@
+create database QuanLyCuaHang;
+use QuanLyCuaHang;
+
+create table KhachHang (
+MaKH  int primary key not null,
+TenKH varchar ( 50 ) not null,
+NgaySinh date,
+DiaChi varchar ( 100 )
+);
+
+insert into KhachHang 
+values 
+( 1 , 'Nguyễn Văn A','2001-01-01','ha noi'),
+( 2 , 'Nguyễn Văn B','2002-02-02','ha tay'),
+( 3 , 'Nguyễn Văn C','2003-03-03','ha dong'); 
+
+select * from KhachHang;
