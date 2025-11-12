@@ -1,0 +1,51 @@
+create database TMDT;
+use TMDT;
+
+create table KhachHang ( 
+MaKH int auto_increment primary key	not null,
+TenKH varchar ( 255 ) not null,
+Email varchar ( 255 ) not null 
+);
+
+create table DonHang (
+MaDH int auto_increment primary key not null,
+MaKH int not null,
+NgayDat date not null,
+foreign key ( MaKH ) references KhachHang ( MaKH )
+);
+
+create	table SanPham ( 
+MaSP int auto_increment primary key not null,
+TenSP varchar ( 255 ) not null,
+Gia decimal ( 10 , 2 ) check ( Gia > 0 ) 
+);
+
+create table ChiTietDonHang (
+MaDH int not null ,
+MaSP int not null,
+SoLuong int not null,
+foreign key ( MaDH ) references DonHang ( MaDH ),
+foreign key ( MaSP ) references SanPham ( MaSP )
+);
+
+insert into KhachHang ( MaKH , TenKH , Email ) 
+values 
+( '1', 'Nguyễn Văn A' , 'nguyenvana@gmail' ),
+( '2', 'Nguyễn Văn B' , 'nguyenvanb@gmail' );
+
+insert into SanPham ( MaSP , TenSP , Gia )
+values 
+('1','Ốp lưng','200.00'),
+('2','Cường lực','100.00');
+ 
+insert into  DonHang ( MaKH , NgayDat )
+values 
+('1','2025-11-13'),
+('2','2025-11-14');
+
+insert into ChiTietDonHang ( MaDH , MaSP , SoLuong)
+values 
+( '1','1','2'),
+( '2','2','3');
+
+select * from ChiTietDonHang;
