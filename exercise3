@@ -1,0 +1,20 @@
+create database QuanLyCuaHang;
+use QuanLyCuaHang;
+
+create table SanPham (
+MaSP int not null primary key ,
+TenSP varchar ( 100 ) not null,
+Gia  decimal ( 10 , 2 ),
+SoLuongTon int default 0 
+);
+alter	table SanPham 
+add column MoTa text;
+
+insert into SanPham ( MaSP , TenSP , Gia , SoLuongTon , MoTa)
+values ( 2 , 'Máy tính Dell' , 1000.00 , 1 , 'Văn phòng'),
+( 3 , 'Máy tính HP' , 2000.00 , 3 , 'Gaming'),
+( 4 , 'Máy tính Lenovo' , 50.00 , 1 , 'Vẽ vời');
+
+select * from SanPham
+where Gia > 50;
+ 
